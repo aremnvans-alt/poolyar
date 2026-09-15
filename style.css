@@ -1,0 +1,913 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  background: #090b10;
+  color: #ffffff;
+  line-height: 1.8;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  padding: 15px 20px;
+
+  background: rgba(9, 11, 16, 0.82);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  width: min(1100px, 100%);
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ================= SIDE MENU ================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1100;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.side-menu {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  z-index: 1200;
+
+  width: min(340px, 88%);
+  height: 100vh;
+
+  padding: 25px;
+
+  background: #11141c;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+
+  transform: translateX(100%);
+
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.25);
+}
+
+.side-menu.active {
+  transform: translateX(0);
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+
+  font-weight: bold;
+}
+
+.close-btn {
+  width: 40px;
+  height: 40px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  color: white;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-nav a {
+  padding: 15px;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: 0.2s ease;
+}
+
+.menu-nav a:hover {
+  background: rgba(255, 255, 255, 0.09);
+
+  transform: translateX(-3px);
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+  width: min(1100px, 100%);
+
+  min-height: 100vh;
+
+  margin: auto;
+
+  padding: 140px 25px 80px;
+
+  display: grid;
+
+  grid-template-columns: 1.2fr 0.8fr;
+
+  align-items: center;
+
+  gap: 50px;
+}
+
+.hero-content {
+  min-width: 0;
+}
+
+.badge {
+  display: inline-block;
+
+  padding: 7px 14px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  font-size: 13px;
+
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 75px);
+
+  line-height: 1.15;
+
+  letter-spacing: -3px;
+
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  display: block;
+
+  opacity: 0.55;
+}
+
+.hero p {
+  max-width: 600px;
+
+  color: #a9afbd;
+
+  font-size: 17px;
+
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn,
+.download-btn {
+  display: inline-flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 13px 22px;
+
+  border-radius: 13px;
+
+  font-weight: bold;
+
+  transition: 0.2s ease;
+}
+
+.primary-btn {
+  background: white;
+
+  color: #090b10;
+}
+
+.secondary-btn {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.download-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ================= PHONE ================= */
+
+.hero-phone {
+  display: flex;
+
+  justify-content: center;
+}
+
+.phone {
+  width: 260px;
+  height: 520px;
+
+  padding: 10px;
+
+  border-radius: 38px;
+
+  background: #1a1d25;
+
+  border: 2px solid #333846;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+.phone-top {
+  width: 80px;
+  height: 18px;
+
+  border-radius: 20px;
+
+  background: #050609;
+
+  margin: 0 auto 10px;
+}
+
+.phone-screen {
+  height: calc(100% - 28px);
+
+  border-radius: 29px;
+
+  padding: 25px 18px;
+
+  background: #10131a;
+}
+
+.phone-logo {
+  font-size: 22px;
+
+  font-weight: bold;
+
+  margin-bottom: 50px;
+}
+
+.balance {
+  padding: 20px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.balance small {
+  display: block;
+
+  color: #9da3b0;
+}
+
+.balance strong {
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 19px;
+}
+
+.phone-cards {
+  display: grid;
+
+  gap: 10px;
+
+  margin-top: 15px;
+}
+
+.phone-cards div {
+  padding: 15px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.phone-cards span,
+.phone-cards b {
+  display: block;
+}
+
+.phone-cards span {
+  color: #9da3b0;
+
+  font-size: 12px;
+}
+
+.phone-cards b {
+  margin-top: 5px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.section {
+  width: min(1100px, 100%);
+
+  margin: auto;
+
+  padding: 100px 25px;
+}
+
+.section-heading {
+  max-width: 650px;
+
+  margin-bottom: 45px;
+}
+
+.section-heading > span {
+  font-size: 13px;
+
+  opacity: 0.55;
+}
+
+.section-heading h2 {
+  font-size: clamp(30px, 5vw, 48px);
+
+  line-height: 1.3;
+
+  margin: 10px 0;
+}
+
+.section-heading p {
+  color: #9da3b0;
+}
+
+
+/* ================= FEATURES ================= */
+
+.features-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.feature-card {
+  padding: 28px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.feature-icon {
+  font-size: 30px;
+
+  margin-bottom: 18px;
+}
+
+.feature-card h3 {
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  color: #9da3b0;
+
+  font-size: 14px;
+}
+
+
+/* ================= SCREENSHOTS ================= */
+
+.screens-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+
+  align-items: start;
+}
+
+.app-screenshot {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: #11141b;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.app-screenshot:hover {
+  transform: translateY(-7px);
+
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.28);
+
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.app-screenshot::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    transparent 20%
+  );
+}
+
+.app-screenshot img {
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  aspect-ratio: 9 / 16;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.app-screenshot:hover img {
+  transform: scale(1.025);
+}
+
+.screenshot-number {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  z-index: 2;
+
+  padding: 4px 9px;
+
+  border-radius: 20px;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  color: white;
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* ================= DOWNLOAD ================= */
+
+.download-section {
+  padding-top: 60px;
+}
+
+.download-box {
+  text-align: center;
+
+  padding: 70px 25px;
+
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.download-box > span {
+  opacity: 0.55;
+
+  font-size: 13px;
+}
+
+.download-box h2 {
+  font-size: clamp(30px, 5vw, 48px);
+
+  margin: 12px 0;
+}
+
+.download-box p {
+  color: #9da3b0;
+
+  margin-bottom: 25px;
+}
+
+.download-btn {
+  gap: 10px;
+
+  background: white;
+
+  color: #090b10;
+}
+
+.download-btn span {
+  font-size: 20px;
+
+  line-height: 1;
+}
+
+
+/* ================= ABOUT ================= */
+
+.about-section {
+  text-align: center;
+}
+
+.about-section .section-heading {
+  margin-left: auto;
+
+  margin-right: auto;
+}
+
+
+/* ================= INSTAGRAM ================= */
+
+.instagram-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 14px 20px;
+
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    #833ab4,
+    #fd1d1d,
+    #fcb045
+  );
+
+  color: white;
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 12px 30px rgba(253, 29, 29, 0.16);
+}
+
+.instagram-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 18px 40px rgba(253, 29, 29, 0.25);
+}
+
+.instagram-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid white;
+
+  border-radius: 13px;
+}
+
+.instagram-icon svg {
+  width: 24px;
+  height: 24px;
+
+  display: block;
+}
+
+.instagram-text {
+  text-align: right;
+}
+
+.instagram-text strong,
+.instagram-text small {
+  display: block;
+}
+
+.instagram-text small {
+  opacity: 0.85;
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+  padding: 30px 20px;
+
+  text-align: center;
+
+  color: #777d89;
+
+  font-size: 11px;
+
+  opacity: 0.65;
+}
+
+
+/* ================= LIGHT MODE ================= */
+
+body.light {
+  background: #f5f6f8;
+
+  color: #101218;
+}
+
+body.light .header {
+  background: rgba(245, 246, 248, 0.85);
+
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light .icon-btn {
+  color: #101218;
+
+  background: rgba(0, 0, 0, 0.04);
+
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light .side-menu {
+  background: #ffffff;
+
+  color: #101218;
+
+  border-left-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light .close-btn {
+  color: #101218;
+
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.light .menu-nav a {
+  background: rgba(0, 0, 0, 0.035);
+
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+body.light .hero p,
+body.light .section-heading p,
+body.light .feature-card p,
+body.light .download-box p {
+  color: #626875;
+}
+
+body.light .badge,
+body.light .secondary-btn,
+body.light .feature-card,
+body.light .download-box,
+body.light .app-screenshot {
+  background: rgba(0, 0, 0, 0.025);
+
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light .primary-btn,
+body.light .download-btn {
+  background: #101218;
+
+  color: white;
+}
+
+body.light .phone {
+  background: #dedfe3;
+
+  border-color: #c6c8ce;
+}
+
+body.light .phone-screen {
+  background: #f5f6f8;
+}
+
+body.light .balance,
+body.light .phone-cards div {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 800px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    padding-top: 125px;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .hero-phone {
+    order: 2;
+  }
+
+  .hero p {
+    margin-left: auto;
+
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .screens-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .header {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .hero {
+    padding-left: 18px;
+
+    padding-right: 18px;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+
+    letter-spacing: -2px;
+  }
+
+  .section {
+    padding: 75px 18px;
+  }
+
+  .screens-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .app-screenshot img {
+    aspect-ratio: auto;
+  }
+
+  .phone {
+    width: 235px;
+
+    height: 470px;
+  }
+
+  .download-box {
+    padding: 50px 20px;
+  }
+
+  .instagram-btn {
+    max-width: 100%;
+  }
+
+}
